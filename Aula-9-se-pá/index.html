@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste site</title>
+    <script>
+
+        alert('Mundo carregado...')
+        function mudarTexto(){
+            const titulo = document.getElementById("titulo")
+            titulo.innerText = "Larga de ser curioso"
+        }
+
+        function mudarSubtitulo(){
+            const Subtitulo = document.getElementsByClassName("Subtitulo")
+            for(let i = 0; i < Subtitulo.length; i++){
+                Subtitulo[i].innerText = "texto alterado, vam bora!!!"
+            }
+        }
+
+        function sumir(){
+            document.getElementById("TiTulo").style.fontSize = "1px"
+        }
+
+        function surgir(){
+            document.getElementById("TiTulo").style.fontSize = "30px"
+        }
+
+    </script>
+    <style>
+        #personagem{
+            width: 50px;
+            height: 50px;
+            background-color: blueviolet;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="script.js"></script>
+    <h1 id="titulo"> Olá, Mundo!</h1>
+    <button onclick="mudarTexto()"> Não clique aqui</button>
+
+    <h2 class="Subtitulo">texto 2</h2>
+    <h2 class="Subtitulo">texto 3</h2>
+    <h2 class="Subtitulo">texto 4</h2>
+    <button onclick="mudarSubtitulo()">Clique apenas aqui</button>
+   
+
+    <h3 id="TiTulo"> Olá, Mundo!</h3>
+    <button onclick="sumir()">Sumir</button>
+    <button onclick="surgir()">Surgir</button>
+   
+
+    <div id="personagem"></div>
+
+    <script>
+        const personagem = document.getElementById("personagem");
+
+        // posição inicial
+        let positionX = 100;
+        let positionY = 100;
+
+        document.addEventListener("keydown", function (event){
+            const passo = 10;
+            if (event.key === "w"){
+                positionY -= passo;
+            }
+            else if (event.key === "s"){
+                positionY += passo;
+            }
+            else if (event.key === "a"){
+                positionX -= passo;
+            }
+            else if (event.key === "d"){
+                positionX += passo;
+            }
+
+            personagem.style.top = positionY + 'px';
+            personagem.style.left = positionX  + 'px';
+        });
+    </script>
+</body>
+</html>
